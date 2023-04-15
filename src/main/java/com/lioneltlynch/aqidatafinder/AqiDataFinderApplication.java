@@ -1,12 +1,18 @@
 package com.lioneltlynch.aqidatafinder;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-@PropertySource("classpath:application.properties")
 public class AqiDataFinderApplication {
-	public static void main(String[] args) {SpringApplication.run(AqiDataFinderApplication.class, args);
+	@Autowired
+	private TomcatServletWebServerFactory tomcatFactory;
+
+	public static void main(String[] args) {
+		SpringApplication app = new SpringApplication(AqiDataFinderApplication.class);
+		ApplicationContext ctx = SpringApplication.run(AqiDataFinderApplication.class, args);
 	}
 }
