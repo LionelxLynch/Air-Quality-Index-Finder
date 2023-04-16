@@ -3,10 +3,7 @@ package com.lioneltlynch.aqidatafinder.cofiguration;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.web.client.RestTemplate;
-
-import javax.naming.Context;
 
 @Configuration
 public class AppConfig {

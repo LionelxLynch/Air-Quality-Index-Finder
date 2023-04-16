@@ -21,7 +21,7 @@ public class MainSec {
     }
 
     //Empty Constructor
-    public MainSec(){};
+    public MainSec(){}
 
     //Constructor
     public MainSec(int aqi){

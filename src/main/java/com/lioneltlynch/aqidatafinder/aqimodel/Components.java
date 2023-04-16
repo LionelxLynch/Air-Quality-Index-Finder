@@ -84,7 +84,7 @@ public class Components {
     }
 
     // Empty Constructor
-    public Components(){};
+    public Components(){}
 
     // Constructor
     public Components(float co, float no, float no2, float o3, float so2, float pm2_5, float pm10, float nh3) {

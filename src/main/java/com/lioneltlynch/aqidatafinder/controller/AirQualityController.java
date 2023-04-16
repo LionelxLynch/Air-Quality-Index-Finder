@@ -11,17 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class AirQualityController {
     private final AirQualityService airQualityService;
 
+
     public AirQualityController(AirQualityService airQualityService) {
         this.airQualityService = airQualityService;
     }
 
     @GetMapping("/aqi-data-finder")
-    public ResponseEntity<APIData> getAirQuality(
+    public ResponseEntity<Integer> getAirQuality(
             @RequestParam("lat") float lat,
             @RequestParam("lon") float lon) {
-        APIData airQuality = airQualityService.getAirQuality(lat, lon);
-        if (airQuality != null) {
-            return ResponseEntity.ok(airQuality);
+        APIData data = airQualityService.MakeAirQualityObj(lat, lon);
+        int aqi = airQualityService.getAqiNum(data);
+        if (aqi >= 0) {
+            return ResponseEntity.ok(aqi);
         } else {
             return ResponseEntity.notFound().build();
         }

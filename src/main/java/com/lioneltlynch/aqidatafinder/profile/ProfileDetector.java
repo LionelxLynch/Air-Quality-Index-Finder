@@ -1,7 +1,6 @@
 package com.lioneltlynch.aqidatafinder.profile;
 
 import org.springframework.context.EnvironmentAware;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 

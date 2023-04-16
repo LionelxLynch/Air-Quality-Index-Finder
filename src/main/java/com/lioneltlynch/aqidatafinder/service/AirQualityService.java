@@ -15,16 +15,18 @@ public class AirQualityService {
         this.restTemplate = restTemplate;
     }
 
-    public APIData getAirQuality(float lat, float lon) {
+    public APIData MakeAirQualityObj(float lat, float lon) {
         String apiKey = "bc6315a65012add41669d99a8cc34d83";
         String url = String.format("http://api.openweathermap.org/data/2.5/air_pollution?lat=%f&lon=%f&appid=%s"
                 ,lat, lon, apiKey);
         try {
-            APIData airData = restTemplate.getForObject(url, APIData.class);
-            return airData;
+            APIData data = restTemplate.getForObject(url, APIData.class);
+            return data;
         } catch (RestClientException e) {
             System.out.println("Error getting air quality data: " + e.getMessage());
             return null;
         }
     }
-}
+    public int getAqiNum(APIData data) {
+        return data.getList().get(0).getMain().getAqi();
+    }}

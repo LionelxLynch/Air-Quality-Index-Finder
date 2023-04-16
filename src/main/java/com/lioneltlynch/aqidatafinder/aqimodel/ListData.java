@@ -13,7 +13,7 @@ public class ListData {
     private Components components;
 
     // Empty Constructor
-    public  ListData(){};
+    public  ListData(){}
 
     // Constructor
     public ListData(DateSec dt, MainSec main, Components components) {

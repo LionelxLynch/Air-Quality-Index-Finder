@@ -18,7 +18,8 @@ public class Coord {
     private List<Float> coordinates;
 
     // Empty Constructor
-    public Coord(){};
+    public Coord(){}
+
     public Coord(float lat, float lon) {
         this.lat = lat;
         this.lon = lon;

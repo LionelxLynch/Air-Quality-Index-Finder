@@ -25,7 +25,7 @@ public class APIData {
     private List<ListData> list;
 
     // Empty Constructor
-    public APIData(){};
+    public APIData(){}
 
     // Constructor
     public APIData(Coord coord, List<ListData> list) {
