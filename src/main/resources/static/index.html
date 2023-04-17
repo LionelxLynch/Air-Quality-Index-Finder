@@ -10,7 +10,8 @@
 
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Roboto', sans-serif;
+        background-color: #f2f2f2;
         margin: 0;
         padding: 0;
       }
@@ -19,11 +20,17 @@
         color: #ffffff;
         text-align: center;
         padding: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 36px;
+        letter-spacing: 2px;
       }
       #content {
         max-width: 800px;
         margin: auto;
         padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 5px;
       }
       #location-form {
         display: flex;
@@ -32,6 +39,10 @@
       }
       label {
         margin-bottom: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        color: #3d3d3d;
       }
       input[type="text"] {
         padding: 10px;
@@ -44,27 +55,27 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #0077cc;
+        background-color: #3d3d3d;
         color: #ffffff;
         cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease-in-out;
       }
       input[type="submit"]:hover {
-        background-color: #005ea2;
+        background-color: #06AC4F;
       }
       #aqi-result {
+        font-family: 'Montserrat', sans-serif;
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 20px;
-      }
-      #map {
-        height: 500px;
-        width: 100%;
-        margin-bottom: 20px;
-      }
     </style>
 </head>
 <body>
-<h1>AQI Data Finder</h1>
+<h1>Air Quality Data Finder</h1>
 <form id="location-form">
     <label for="lat">Latitude:</label>
     <input type="text" id="lat" name="lat"><br>
@@ -96,7 +107,7 @@
             data: { lat: lat, lon: lon },
             success: function(result) {
               // Display the AQI result on the webpage
-              $("#aqi-result").text("AQI: " + result);
+              $("#aqi-result").text(result);
 
               // Display the location on the map
               var map = L.map('map').setView([lat, lon], 13);

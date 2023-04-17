@@ -17,15 +17,24 @@ public class AirQualityController {
     }
 
     @GetMapping("/aqi-data-finder")
-    public ResponseEntity<Integer> getAirQuality(
+    public ResponseEntity<String> getAirQuality(
             @RequestParam("lat") float lat,
             @RequestParam("lon") float lon) {
         APIData data = airQualityService.MakeAirQualityObj(lat, lon);
         int aqi = airQualityService.getAqiNum(data);
-        if (aqi >= 0) {
-            return ResponseEntity.ok(aqi);
+        String message = "";
+        if (aqi <= 50) {
+            message = "The air quality in this location is good.";
+        } else if (aqi <= 100) {
+            message = "The air quality in this location is moderate.";
+        } else if (aqi <= 150) {
+            message = "The air quality in this location is unhealthy for sensitive groups.";
+        } else if (aqi <= 200) {
+            message = "The air quality in this location is unhealthy.";
         } else {
-            return ResponseEntity.notFound().build();
+            message = "The air quality in this location is very unhealthy or hazardous.";
         }
+        String response = "The AQI is "+aqi + ". " + message;
+        return ResponseEntity.ok(response);
     }
 }
