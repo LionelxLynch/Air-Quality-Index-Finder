@@ -16,7 +16,7 @@ public class AirQualityService {
     }
 
     public APIData MakeAirQualityObj(float lat, float lon) {
-        String apiKey = "bc6315a65012add41669d99a8cc34d83";
+        String apiKey = ""; // API key Would be stored in Env as a var.
         String url = String.format("http://api.openweathermap.org/data/2.5/air_pollution?lat=%f&lon=%f&appid=%s"
                 ,lat, lon, apiKey);
         try {
