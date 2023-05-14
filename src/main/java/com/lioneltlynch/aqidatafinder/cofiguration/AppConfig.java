@@ -14,7 +14,7 @@ public class AppConfig {
     @Bean
     public TomcatServletWebServerFactory tomcatFactory() {
         TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
-        factory.setPort(8080); // set port number
+        factory.setPort(8081); // set port number
         // configure SSL, compression, or other settings as needed
         return factory;
     }
