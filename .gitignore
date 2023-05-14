@@ -40,3 +40,6 @@ build/
 
 ### ENV ###
 src/main/resources/.env
+
+### Docker ###
+docker-compose.yml

@@ -1,0 +1,8 @@
+# Exclude specific files
+.env
+.git
+.gitignore
+
+# Exclude directories
+node_modules
+target
