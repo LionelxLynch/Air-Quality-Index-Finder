@@ -34,7 +34,7 @@ public class AirQualityController {
         } else {
             message = "The air quality in this location is very unhealthy or hazardous.";
         }
-        String response = "The AQI is "+aqi + ". " + message;
+        String response = "The AQI is "+ aqi + ". " + message;
         return ResponseEntity.ok(response);
     }
 }
