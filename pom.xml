@@ -14,7 +14,7 @@
 	<name>aqi-data-finder</name>
 	<description>Finds the air quality of any city</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>19</java.version>
 	</properties>
 	<dependencies>
 		<!-- Spring MVC -->

@@ -4,85 +4,114 @@
     <meta charset="UTF-8">
     <title>AQI Data Finder</title>
     <!-- Add Leaflet and jQuery library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" integrity="sha512-3KfDZl+8ZLeXf4j4s4sZWpT/CY8aPHIg2SjK1Jzyvn+/0A8dkvX9Q2mbrbhCI7VjKdl0Uf7kwUxFM6fbkNGCPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+          crossorigin=""/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" integrity="sha512-m5M5Jy8/GgupK7AeR5+CTV7wwnBfVRJ9XQ2efoiF1mcLzKr6n+tU6h+vUhc/JrU6r/VaF+LeL9X4KOD4sZO4/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
-      body {
-        font-family: 'Roboto', sans-serif;
-        background-color: #f2f2f2;
-        margin: 0;
-        padding: 0;
-      }
-      #header {
-        background-color: #3d3d3d;
-        color: #ffffff;
-        text-align: center;
-        padding: 20px;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 36px;
-        letter-spacing: 2px;
-      }
-      #content {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        background-color: #ffffff;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        border-radius: 5px;
-      }
-      #location-form {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
-      }
-      label {
-        margin-bottom: 10px;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
-        font-weight: bold;
-        color: #3d3d3d;
-      }
-      input[type="text"] {
-        padding: 10px;
-        margin-bottom: 20px;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      }
-      input[type="submit"] {
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #3d3d3d;
-        color: #ffffff;
-        cursor: pointer;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        transition: background-color 0.3s ease-in-out;
-      }
-      input[type="submit"]:hover {
-        background-color: #06AC4F;
-      }
-      #aqi-result {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
+  body {
+    background-image: url('https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?w=1380&t=st=1681777520~exp=1681778120~hmac=7fe8e99c3877708122927171d7b9db5c953c93d08960347667ece53fdecf7712');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+  #header {
+    background-color: #3d3d3d;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
 
-      #title {
-        text-align: center;
-      }
+  #map {
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 
-    </style>
+  #location-form {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+  }
+
+  #location-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3d3d3d;
+    text-align: left;
+  }
+
+  #location-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 16px;
+  }
+
+  #location-form input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3d3d3d;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  #location-form input[type="submit"]:hover {
+    background-color: #06AC4F;
+  }
+
+  #aqi-result {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  #title {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+</style>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin="">
+    </script>
 </head>
 <body>
-<h1 id="title">Air Quality Data Finder</h1>
+<h1 id="title" style="text-align:center">Air Quality Data Finder</h1>
 <form id="location-form">
     <label for="lat">Latitude:</label>
     <input type="text" id="lat" name="lat"><br>
@@ -98,43 +127,50 @@
 <div id="map"></div>
 
 <script>
-      $(document).ready(function() {
-        $("#location-form").submit(function(event) {
-          // Prevent the form from submitting normally
-          event.preventDefault();
+$(document).ready(function() {
+  // Create a variable to store the map instance
+  var map;
 
-          // Get the values of the lat and lon input fields
-          var lat = $("#lat").val();
-          var lon = $("#lon").val();
+  $("#location-form").submit(function(event) {
+    // Prevent the form from submitting normally
+    event.preventDefault();
 
-          // Make the AJAX call to the backend API endpoint
-          $.ajax({
-            type: "GET",
-            url: "/aqi-data-finder",
-            data: { lat: lat, lon: lon },
-            success: function(result) {
-              // Display the AQI result on the webpage
-              $("#aqi-result").text(result);
+    // Get the values of the lat and lon input fields
+    var lat = $("#lat").val();
+    var lon = $("#lon").val();
 
-              // Display the location on the map
-              var map = L.map('map').setView([lat, lon], 13);
+    // Make the AJAX call to the backend API endpoint
+    $.ajax({
+      type: "GET",
+      url: "/aqi-data-finder",
+      data: { lat: lat, lon: lon },
+      success: function(result) {
+        // Display the AQI result on the webpage
+        $("#aqi-result").text(result);
 
-              L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-                maxZoom: 18,
-              }).addTo(map);
+        // Remove the old map instance if it exists
+        if (map) {
+          map.remove();
+        }
 
-              L.marker([lat, lon]).addTo(map)
-                .bindPopup("Latitude: " + lat +
-                           "<br>Longitude: " + lon)
-                .openPopup();
-            },
-            error: function(xhr, status, error) {
-              alert("An error occurred: " + xhr.responseText);
-            }
-          });
-        });
-      });
-    </script>
+        // Display the location on the map
+        map = L.map('map').setView([lat, lon], 1);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+          maxZoom: 18,
+        }).addTo(map);
+
+        L.marker([lat, lon]).addTo(map)
+          .bindPopup("Latitude: " + lat + "<br>Longitude: " + lon)
+          .openPopup();
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
