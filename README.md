@@ -22,13 +22,14 @@ Start using the Air Quality Index Application today to stay informed about the a
 To run the Mandarin Flashcard Application using Docker, follow these steps:
 
 1. Make sure you have Docker installed on your system.
+
 2. Pull the Docker image from Docker Hub:
 
-- docker pull lioneltlynch/mandarin-flashcard-app:latest
+- `docker pull lioneltlynch/mandarin-flashcard-app:latest`
 
 3. Run the Docker image:
 
-- docker run -d -p 8081:8081 lioneltlynch/mandarin-flashcard-app:latest
+- `docker run -d -p 8081:8081 lioneltlynch/mandarin-flashcard-app:latest`
   
 4. Access the application by opening a web browser and navigating to `http://localhost:8081`.
 
