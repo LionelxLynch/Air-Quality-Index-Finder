@@ -1,8 +1,8 @@
 # Air Quality Index Finder 
 
 <div align="center">
-  <img src="images/Screenshot 2023-05-14 at 3.14.13 PM.png" alt="Screenshot 1" width="500" />
-  <img src="images/Screenshot 2023-05-14 at 3.14.35 PM.png" alt="Screenshot 2" width="500" />
+  <img src="Images/Screenshot 2023-05-14 at 3.14.13 PM.png" alt="Screenshot 1" width="500" />
+  <img src="Images/Screenshot 2023-05-14 at 3.14.35 PM.png" alt="Screenshot 2" width="500" />
 </div>
 
 ## Description
